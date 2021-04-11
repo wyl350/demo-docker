@@ -25,3 +25,17 @@ get.daocloud.io/toobox/
 安装完成后，修改快捷方式的 地址为： "C:\Program Files\Git\bin\bash.exe" --login -i "C:\Program Files\Docker Toolbox\start.sh"  这一步极其的重要。
 
 
+## 2021年4月11日 我看的内容
+
+b站： Docker最新版 通俗易懂，快速上手的Docker基础+进阶（零基础入门必备）学会Docker部署SpringBoot项目吃透Docker容器
+uup： 全栈工程师嘟嘟
+
+### 第五个视频
+
+老师讲解如何 配置网络环境 老师的centos是最小安装版本的
+这里有详细的介绍如何 配置 cnetos 的网络环境
+
+
+
+ 
+
