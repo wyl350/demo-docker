@@ -1,3 +1,5 @@
+
+
 ## 
 
 get.daocloud.io/toobox/
@@ -145,6 +147,7 @@ docker 官方的网址： hub.docker.com
 docker image ls : 列出所有的镜像列表
 docker image inspect <镜像> ： 查看镜像的具体信息（镜像信息）
 docker image rm <镜像>： 删除镜像，当然是可以同时删除多个镜像的
+docker image history <镜像>： 查看镜像详细分层命令
 
 
 ### 镜像信息
@@ -162,6 +165,20 @@ docker image ls
 改名： docker image tag jspang jspangcom/jspang
 改名的目的就是为了让不符合h官方库的名字符合标准名。
 上传： docker image push jspangcom/jspang
+
+### 构建docker服务
+
+最后的 . 是指定有 Dockerfile 文件的目录： docker image build -t jspang .
+
+### hub.docker
+
+在该网址注册用户名。
+我的用户名是： wyl350
+密码是： 我的云密码
+
+登录命令： docker login 
+
+登陆后，会在 docker info 中显示。
 
 
 
