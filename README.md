@@ -36,6 +36,134 @@ uup： 全栈工程师嘟嘟
 这里有详细的介绍如何 配置 cnetos 的网络环境
 
 
+## 2021年9月12日 我又重新开始学习 docker
+
+技术胖的docker 教程： https://www.bilibili.com/video/BV1754y1J7KA?spm_id_from=pageDriver
+
+技术胖的网址： https://jspang.com
+
+docker具体网址： https://jspang.com/detailed?id=75#toc25
+
+## linux 安装教程
+
+安装命令： curl -fsSL get.docker.com -o get-docker.sh
+ 
+查看是否安装完毕： docker version
+
+这个命令并不能查看到当前系统已经启动 服务，仅仅能看到已经启动客户端。需要命令启动服务。
+
+启动服务命令： systemctl start docker
+
+### 镜像加速器配置
+
+官方镜像仓库的速度是非常慢的，应该使用国内的镜像加速器来加速
+
+https//cr.console.aliyun.com
+
+docker info 命令确认是否加速器配置成功
+
+2020年11月15日 我在阿里云注册了我的云账号
+云账号： 王艳雷
+云密码： 我的 exis 的复杂密码 
+阿里云的 容器镜像服务 设置Registry登录密码： wyl3527459
+
+在该网站我得到我的镜像加速器的地址为： https://ax9f95rd.mirror.aliyuncs.com
+
+centOS 配置镜像加速器配置  : 
+sudo mkdir -p /etc/docker
+sudo tee /etc/docker/daemon.json <<-'EOF'
+{
+  "registry-mirrors": ["https://ax9f95rd.mirror.aliyuncs.com"]
+}
+EOF
+sudo systemctl daemon-reload  # 重新加载配置文件
+sudo systemctl restart docker # 重新加载daemon
+
+docker info 来查看信息: 为： 
+
+Registry: https://index.docker.io/v1/
+
+配置淘宝镜像： $ sudo docker login --username=王艳雷 registry.cn-hangzhou.aliyuncs.com
+
+### 初级使用
+
+docker container run nginx
+
+展示全部容器：
+docker container ls
+docker container ps
+
+展示所有容器：
+docker container ls -a 
+docker container ps -a
+注意这个命令是可以展示所有的容器的哈希值的， -q参数的作用： 
+docker container ls -aq
+
+停止容器：
+docker container stop <容器名>
+
+删除容器： 
+docker container rm <容器名>
+但是，正在运行的容器是不能删除的，如果要删除一定要使用参数 -f （--force）
+
+
+批量处理命令,停止所有的容器： 
+docker container stop $(docker container ps -aq)
+
+端口映射： -p 80:90
+外部的端口是80（服务器的端口），内部的端口是90（容器的端口）
+
+启动具体的容器 -d(--detached)： docker container run -p 90:80 nginx
+外网访问端口是 90.
+后台运行命令： docker container run -d -p 90:80 nginx
+
+后台命令调往前台： docker attach 5bf
+
+正在运行的容器，日志查看命令： docker container logs 3b 
+正在运行的容器，日志跟踪命令： docker container logs 3b  -f
+注意进入这个跟踪模式后，与占用终端窗口的模式不同，是能够关闭的，容器也不会停止服务。
+
+docker container run -it ubuntu sh  ：交互模式使用  shell 脚本的方式进行操作。一旦退出，容器也对应退出。
+
+交互模式进入，但是这种模式不会影响正在运行的容器： docker exec -it bcf sh
+
+### 获取镜像的三种方式： 
+
+1. pull from registry
+1. Dockerfile online
+1. 自有文件导入 offline
+
+docker 官方的网址： hub.docker.com
+红帽旗下的： quay.io
+
+每个镜像的 tag 标签可以拉取具体的镜像。
+
+
+### 镜像操作
+
+拉取镜像： docker image pull wordpress
+docker image ls : 列出所有的镜像列表
+docker image inspect <镜像> ： 查看镜像的具体信息（镜像信息）
+docker image rm <镜像>： 删除镜像，当然是可以同时删除多个镜像的
+
+
+### 镜像信息
+
+Architecture： 架构（amd64）
+Os： 系统 （linux）
+layer：层
+
+
+
+
+
+
+
+
+
+
+
+
 
  
 

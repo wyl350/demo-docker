@@ -92,32 +92,7 @@ systemctl stop docker
 
 docker info
 
-### 镜像加速器配置
 
-官方镜像仓库的速度是非常慢的，应该使用国内的镜像加速器来加速
-
-https//cr.console.aliyun.com
-
-docker info 命令确认是否加速器配置成功
-
-2020年11月15日 我在阿里云注册了我的云账号
-云账号： 王艳雷
-云密码： 我的 exis 的复杂密码 
-阿里云的 容器镜像服务 设置Registry登录密码： wyl3527459
-
-在该网站我得到我的镜像加速器的地址为： https://ax9f95rd.mirror.aliyuncs.com
-
-centOS 配置镜像加速器配置  : 
-sudo mkdir -p /etc/docker
-sudo tee /etc/docker/daemon.json <<-'EOF'
-{
-  "registry-mirrors": ["https://ax9f95rd.mirror.aliyuncs.com"]
-}
-EOF
-sudo systemctl daemon-reload  # 重新加载配置文件
-sudo systemctl restart docker # 重新加载daemon
-
-docker info 来查看信息
 
 ### Docker 镜像操作
 
