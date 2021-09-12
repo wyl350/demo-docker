@@ -153,6 +153,18 @@ Architecture： 架构（amd64）
 Os： 系统 （linux）
 layer：层
 
+### 镜像的导入导出
+
+docker image ls
+
+文件导出： docker image save <镜像> -o <保存地址>
+文件导入： docker image load -i <镜像地址>    
+改名： docker image tag jspang jspangcom/jspang
+改名的目的就是为了让不符合h官方库的名字符合标准名。
+上传： docker image push jspangcom/jspang
+
+
+
 
 
 
