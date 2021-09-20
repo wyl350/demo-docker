@@ -1,0 +1,15 @@
+# syntax=docker/dockerfile:1
+FROM node:12 AS build
+WORKDIR /app
+COPY package* yarn.lock ./
+RUN yarn install
+COPY public ./public
+COPY src ./src
+RUN yarn run build
+
+FROM nginx:alpine
+COPY --from=build /app/build /usr/share/nginx/html
+
+# 这个容器是可以用来做为 react项目的build容器的。
+# 这个项目中的node:12 程序仅仅是用来打包的，用来使用了一下而已。
+#
