@@ -1,0 +1,19 @@
+{
+  "name": "demo-docker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitee.com:wyl350/demo-docker.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ronin-mocks": "^0.1.4",
+    "ronin-server": "^0.1.3"
+  }
+}
